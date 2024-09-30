@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
   const [products, setProducts] = useState([]);
 
+  //to get the product
   useEffect(() => {
     fetchData();
   }, []);
@@ -18,6 +19,17 @@ const Home = () => {
       console.log(error);
     }
   };
+
+//to delete the product
+const handleDelete = async(id)=>{
+    try {
+        await axios.delete(`https://ecomm-backend-dc9u.onrender.com/api/products/delete/${id}`)
+        fetchData(); // to refresh the product list after deleting
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
 
   return (
     <div className="container mt-4">
@@ -40,7 +52,7 @@ const Home = () => {
                 <button type="button" className="btn btn-warning mx-1" >
                   Edit
                 </button>
-                <button type="button" className="btn btn-danger mx-1" >
+                <button type="button" className="btn btn-danger mx-1" onClick={()=>handleDelete(ele._id)}>
                   Delete
                 </button>
               </div>
