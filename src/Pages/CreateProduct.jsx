@@ -14,7 +14,7 @@ const CreateProduct = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:5000/api/products/create",
+        "https://ecomm-backend-dc9u.onrender.com/api/products/create",
         formData
       );
       navigate("/"); //redirect to home page
