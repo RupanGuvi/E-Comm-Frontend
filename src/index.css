@@ -1,0 +1,16 @@
+.navbar-collapse{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: 150px;
+}
+a{
+  color: aqua !important;
+  font-size: x-large !important;
+  font-weight: bolder !important;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
