@@ -12,7 +12,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        "https://ecomm-backend-dc9u.onrender.com/api/products/get"
+        "http://localhost:5000/api/products/get"
       );
       setProducts(res.data.result);
     } catch (error) {
@@ -20,16 +20,17 @@ const Home = () => {
     }
   };
 
-//to delete the product
-const handleDelete = async(id)=>{
+  //to delete the product
+  const handleDelete = async (id) => {
     try {
-        await axios.delete(`https://ecomm-backend-dc9u.onrender.com/api/products/delete/${id}`)
-        fetchData(); // to refresh the product list after deleting
+      await axios.delete(
+        `https://ecomm-backend-dc9u.onrender.com/api/products/delete/${id}`
+      );
+      fetchData(); // to refresh the product list after deleting
     } catch (error) {
-        console.log(error);
-        
+      console.log(error);
     }
-}
+  };
 
   return (
     <div className="container mt-4">
@@ -49,10 +50,14 @@ const handleDelete = async(id)=>{
                 <h5 className="card-title">${ele.productPrice}</h5>
               </div>
               <div className="card-footer text-center">
-                <button type="button" className="btn btn-warning mx-1" >
+                <button type="button" className="btn btn-warning mx-1">
                   Edit
                 </button>
-                <button type="button" className="btn btn-danger mx-1" onClick={()=>handleDelete(ele._id)}>
+                <button
+                  type="button"
+                  className="btn btn-danger mx-1"
+                  onClick={() => handleDelete(ele._id)}
+                >
                   Delete
                 </button>
               </div>
@@ -60,7 +65,7 @@ const handleDelete = async(id)=>{
           </div>
         ))}
       </div>
-      </div>
+    </div>
   );
 };
 
